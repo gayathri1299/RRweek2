@@ -21,5 +21,9 @@ hist(databydate$tsteps, xlab = "Total daily Steps",main="Histogram of Total Step
 mean(databydate$tsteps)
 median(databydate$tsteps)
 
+#Time series plot
+library(ggplot2)
+databyinterval <- stepdata%>% select(interval, steps) %>% na.omit() %>% group_by(interval) %>% summarize(tsteps= mean(steps)) 
+ggplot(databyinterval, aes(x=interval, y=tsteps))+ geom_line()
 knitr::opts_chunk$set(echo = TRUE)
 ``
