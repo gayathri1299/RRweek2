@@ -1,0 +1,25 @@
+---
+title: "PA1_template"
+author: "me"
+date: "14/03/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+# download file from web
+download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip", destfile = "activity.zip", mode="wb")
+# unzip data and read 
+unzip("activity.zip")
+stepdata <- read.csv("activity.csv", header = TRUE)
+head(stepdata)
+library(magrittr)
+library(dplyr)
+databydate <- stepdata %>% select(date, steps) %>% group_by(date) %>% summarize(tsteps= sum(steps)) %>%na.omit()
+hist(databydate$tsteps, xlab = "Total daily Steps",main="Histogram of Total Steps by day", breaks = 20)
+
+#calculating mean
+mean(databydate$tsteps)
+median(databydate$tsteps)
+
+knitr::opts_chunk$set(echo = TRUE)
+``
