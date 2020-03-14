@@ -55,5 +55,20 @@ head(FullSummedDataByDay,15)
 summary(FullSummedDataByDay)
 hist(FullSummedDataByDay$totalsteps, xlab = "Steps", ylab = "Frequency", main = "Total Daily Steps", breaks = 20)
 
+#comparing old and new mean, median values
+oldmean <- mean(databydate$tsteps, na.rm = TRUE)
+newmean <- mean(FullSummedDataByDay$totalsteps)
+# Old mean and New mean
+oldmean
+
+newmean
+
+oldmedian <- median(databydate$tsteps, na.rm = TRUE)
+newmedian <- median(FullSummedDataByDay$totalsteps)
+# Old median and New median
+oldmedian
+
+newmedian
+
 knitr::opts_chunk$set(echo = TRUE)
 ``
